@@ -6,6 +6,7 @@ import sendForm from './modules/sendForm';
 import popupDiscount from './modules/popupDiscount';
 import popupCheck from './modules/popupCheck';
 import popupConsultation from './modules/popupConsultation';
+import accordion from './modules/accordion';
 
 test();
 
@@ -18,3 +19,5 @@ popupDiscount();
 popupCheck();
 
 popupConsultation();
+
+accordion();
