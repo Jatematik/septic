@@ -7,6 +7,7 @@ import popupDiscount from './modules/popupDiscount';
 import popupCheck from './modules/popupCheck';
 import popupConsultation from './modules/popupConsultation';
 import accordion from './modules/accordion';
+import getBlocks from './modules/getBlocks';
 
 test();
 
@@ -21,3 +22,5 @@ popupCheck();
 popupConsultation();
 
 accordion();
+
+getBlocks();

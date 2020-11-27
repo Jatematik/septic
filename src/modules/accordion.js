@@ -21,7 +21,6 @@ const accordion = () => {
         if (target) {
             accordionPanel.forEach((item, i) => {
                 if (item === target) {
-                    console.log(target);
                     toggleAccordion(i);
                 } 
             });

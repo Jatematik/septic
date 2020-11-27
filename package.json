@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
+    "animate.css": "^4.1.1",
     "element-closest": "^3.0.2",
     "es6-promise": "^4.2.8",
     "fetch-polyfill": "^0.8.2",
