@@ -154,7 +154,7 @@
                                 </div>
                                 <img class="type-septic" src="img/constructor/type-septic-two.png" alt="septic">
                                 <p>камерный</p>
-                                <a class="button construct-btn collapsed" data-toggle="collapse"
+                                <a class="button construct-btn collapsed active" data-toggle="collapse"
                                    data-parent="#accordion" href="#collapseTwo"><span>Следующий шаг</span></a>
                             </div>
                         </div>
@@ -176,31 +176,31 @@
                                 <div class="title-text">первый колодец (приемный)</div>
                                 <div class="select-box">
                                     <p><strong>Диаметр</strong></p>
-                                    <select class="form-control expand">
+                                    <select class="form-control expand" id="diameter1">
                                         <option>1.4 метра</option>
                                         <option>2 метра</option>
                                     </select>
                                 </div>
                                 <div class="select-box">
                                     <p><strong>Количество колец</strong></p>
-                                    <select class="form-control expand">
+                                    <select class="form-control expand" id="quantity1">
                                         <option>1 штука</option>
                                         <option>2 штуки</option>
                                         <option>3 штуки</option>
                                     </select>
                                 </div>
 
-                                <div class="title-text">второй колодец (дренажный)</div>
-                                <div class="select-box">
+                                <div class="title-text nonactive">второй колодец (дренажный)</div>
+                                <div class="select-box nonactive">
                                     <p><strong>Диаметр</strong></p>
-                                    <select class="form-control expand">
+                                    <select class="form-control expand" id="diameter2">
                                         <option>1.4 метра</option>
                                         <option>2 метра</option>
                                     </select>
                                 </div>
-                                <div class="select-box">
+                                <div class="select-box nonactive">
                                     <p><strong>Количество колец</strong></p>
-                                    <select class="form-control expand">
+                                    <select class="form-control expand" id="quantity2">
                                         <option>1 штука</option>
                                         <option>2 штуки</option>
                                         <option>3 штуки</option>
@@ -227,7 +227,7 @@
                                 </p>
 
                                 <div class="onoffswitch">
-                                    <input type="checkbox" name="onoffswitch-two" class="onoffswitch-checkbox"
+                                    <input type="checkbox" name="onoffswitch-two" class="onoffswitch-checkbox on"
                                            id="myonoffswitch-two" checked>
                                     <label class="onoffswitch-label" for="myonoffswitch-two">
                                         <span class="onoffswitch-inner"></span>
@@ -254,7 +254,7 @@
                              aria-labelledby="headingFour">
                             <div class="panel-body">
                                 <p>Введите расстояние до дома</p>
-                                <input type="text">
+                                <input type="text" id="meters">
                                 <button class="button construct-btn call-btn">Получить расчет и скидку</button>
                             </div>
                         </div>
