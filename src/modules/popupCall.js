@@ -4,10 +4,12 @@ const popupCall = () => {
         inputs = document.querySelectorAll('.popup-dialog input');
 
     callBtn.forEach((item) => {
-        item.addEventListener('click', (event) => {
-            event.preventDefault();
-            popupCall.style.display = 'block';
-        });
+        if (callBtn[0] === item || callBtn[callBtn.length - 1] === item) {
+            item.addEventListener('click', (event) => {
+                event.preventDefault();
+                popupCall.style.display = 'block';
+            });
+        }
     });
 
     popupCall.addEventListener('click', (event) => {

@@ -73,7 +73,10 @@ const calc = () => {
         diameterSecond = document.getElementById('diameter2'),
         quantityFirst = document.getElementById('quantity1'),
         quantitySecond = document.getElementById('quantity2'),
-        result = document.getElementById('calc-result');
+        result = document.getElementById('calc-result'),
+        popupDiscount = document.querySelector('.popup-discount'),
+        inputs = popupDiscount.querySelectorAll('.popup-dialog input'),
+        callBtn = accordion.querySelector('.call-btn');
 
     let dataCalc = {};
 
@@ -171,9 +174,6 @@ const calc = () => {
                 'Расстояние от септика до дома': meters.value
             };
         }
-
-        console.log(dataCalc);
-
         result.value = total;
     };
 
@@ -191,6 +191,81 @@ const calc = () => {
             sum();
         }
     });
+
+    callBtn.addEventListener('click', (event) => {
+        event.preventDefault();
+        popupDiscount.style.display = 'block';
+    });
+
+    popupDiscount.addEventListener('click', (event) => {
+        let target = event.target;
+        if (target.matches('.popup-close')) {
+            inputs.forEach((item) => {
+                item.value = '';
+            });
+            popupDiscount.style.display = 'none';
+        } else {
+            target = target.closest('.popup-dialog');
+            if (!target) {
+                inputs.forEach((item) => {
+                    item.value = '';
+                });
+                popupDiscount.style.display = 'none';
+            }
+        }
+    });
+
+    // send data and form
+    const errorMessage = 'Ошибка, что-то пошло не так...',
+        loadMessage = 'Идет отправка...',
+        successMessage = 'Отправлено! Мы скоро с вами свяжемся!',
+        form = document.getElementById('popup-discount');
+
+    const statusMessage = document.createElement('div');
+    statusMessage.style.cssText = `font-size: 2rem;
+    color: black;`;
+
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        form.appendChild(statusMessage);
+        statusMessage.textContent = loadMessage;
+
+        const formData = new FormData(form);
+        formData.forEach((val, key) => {
+            dataCalc[key] = val;
+        });
+        console.log(dataCalc);
+        postData(dataCalc).then((response) => {
+            if (response.status !== 200) {
+                throw new Error('status network not 200.');
+            }
+            statusMessage.textContent = successMessage;
+            function deleteMessageTime(){
+                statusMessage.remove();
+                clearInterval(deleteMessage);
+            }
+            let deleteMessage = setInterval(deleteMessageTime, 5000);
+        })
+        .catch((error) => {
+            statusMessage.textContent = errorMessage;
+            console.log(error);
+            function deleteMessageTime(){
+                statusMessage.remove();
+                clearInterval(deleteMessage);
+            }
+            let deleteMessage = setInterval(deleteMessageTime, 5000);
+        }).finally(() => {
+            form.querySelectorAll('input').value = '';
+        });
+    });
+
+    const postData = (body) => {
+        return fetch('./server.php', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(body)
+        });
+    };
 };
 
 export default calc;
