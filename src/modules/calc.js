@@ -175,6 +175,7 @@ const calc = () => {
             };
         }
         result.value = total;
+        dataCalc['Итоговая стоимость'] = result.value;
     };
 
     accordion.addEventListener('change', (event) => {

@@ -13,6 +13,7 @@ const popupCall = () => {
     });
 
     popupCall.addEventListener('click', (event) => {
+        event.preventDefault();
         let target = event.target;
         if (target.matches('.popup-close')) {
             inputs.forEach((item) => {

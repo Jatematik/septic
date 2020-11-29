@@ -4,8 +4,11 @@ const getBlocks = () => {
         addBlockOne = sentence.querySelector('.visible-sm-block');
 
     let addBlocks = sentence.querySelectorAll('.hidden');
+    console.log();
 
     addBtn.addEventListener('click', () => {
+        addBtn.parentElement.style.transform = 'translateY(50%)';
+        addBtn.style.transform = 'translateY(-50%)';
         if (addBlockOne.classList.contains('visible-sm-block')) {
             addBlockOne.classList.remove('visible-sm-block');
         } else {

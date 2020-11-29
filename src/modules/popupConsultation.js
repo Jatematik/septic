@@ -62,6 +62,7 @@ const popupConsultation = () => {
     };
 
     popupConsultation.addEventListener('click', (event) => {
+        event.preventDefault();
         let target = event.target;
         if (target.matches('.popup-close')) {
             popupConsultation.style.display = 'none';
