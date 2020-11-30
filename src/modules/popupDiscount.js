@@ -10,7 +10,6 @@ const popupDiscount = () => {
     });
 
     discountModal.addEventListener('click', (event) => {
-        event.preventDefault();
         let target = event.target;
         if (target.matches('.popup-close')) {
             inputs.forEach((item) => {

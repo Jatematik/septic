@@ -193,8 +193,7 @@ const calc = () => {
         }
     });
 
-    callBtn.addEventListener('click', (event) => {
-        event.preventDefault();
+    callBtn.addEventListener('click', () => {
         popupDiscount.style.display = 'block';
     });
 
@@ -220,18 +219,20 @@ const calc = () => {
     const errorMessage = 'Ошибка, что-то пошло не так...',
         loadMessage = 'Идет отправка...',
         successMessage = 'Отправлено! Мы скоро с вами свяжемся!',
-        form = document.getElementById('popup-discount');
+        formDiscount = document.getElementById('popup-discount');
 
     const statusMessage = document.createElement('div');
     statusMessage.style.cssText = `font-size: 2rem;
     color: black;`;
 
-    form.addEventListener('submit', (event) => {
+    console.log(formDiscount);
+
+    formDiscount.addEventListener('submit', (event) => {
         event.preventDefault();
-        form.appendChild(statusMessage);
+        formDiscount.appendChild(statusMessage);
         statusMessage.textContent = loadMessage;
 
-        const formData = new FormData(form);
+        const formData = new FormData(formDiscount);
         formData.forEach((val, key) => {
             dataCalc[key] = val;
         });
@@ -256,7 +257,7 @@ const calc = () => {
             }
             let deleteMessage = setInterval(deleteMessageTime, 5000);
         }).finally(() => {
-            form.querySelectorAll('input').value = '';
+            formDiscount.querySelectorAll('input').value = '';
         });
     });
 

@@ -2,6 +2,7 @@ const popupConsultation = () => {
     const popupConsultation = document.querySelector('.popup-consultation'),
         consultationBtn = document.querySelector('.consultation-btn'),
         formDirector = document.querySelector('.director-form'),
+        formCapture = document.getElementById('form-consultation'),
         input = formDirector.querySelector('input');
 
         const errorMessage = 'Ошибка, что-то пошло не так...',
@@ -12,6 +13,8 @@ const popupConsultation = () => {
         statusMessage.style.cssText = `font-size: 2rem;
         color: white;
         text-align: center;`;
+
+        console.log(formCapture);
 
     formDirector.addEventListener('submit', (event) => {
         event.preventDefault();
@@ -26,6 +29,40 @@ const popupConsultation = () => {
             body[key] = val;
         });
         postData(body, () => {
+            statusMessage.textContent = successMessage;
+            function deleteMessageTime(){
+                statusMessage.remove();
+                clearInterval(deleteMessage);
+            }
+            let deleteMessage = setInterval(deleteMessageTime, 5000);
+        }, (error) => {
+            statusMessage.textContent = errorMessage;
+            console.error(error);
+            function deleteMessageTime(){
+                statusMessage.remove();
+                clearInterval(deleteMessage);
+            }
+            let deleteMessage = setInterval(deleteMessageTime, 5000);
+        });
+        input.value = '';
+    });
+
+    formCapture.addEventListener('submit', (event) => {
+        event.preventDefault();
+        formCapture.appendChild(statusMessage);
+        statusMessage.style.cssText = `font-size: 2rem;
+        color: black;
+        text-align: center;`;
+        statusMessage.textContent = loadMessage;
+
+        popupConsultation.style.display = 'block';
+
+        const formData = new FormData(formCapture);
+        let bodyCapture = {};
+        formData.forEach((val, key) => {
+            bodyCapture[key] = val;
+        });
+        postData(bodyCapture, () => {
             statusMessage.textContent = successMessage;
             function deleteMessageTime(){
                 statusMessage.remove();
@@ -62,7 +99,6 @@ const popupConsultation = () => {
     };
 
     popupConsultation.addEventListener('click', (event) => {
-        event.preventDefault();
         let target = event.target;
         if (target.matches('.popup-close')) {
             popupConsultation.style.display = 'none';
