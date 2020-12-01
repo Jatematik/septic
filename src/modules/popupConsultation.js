@@ -14,8 +14,6 @@ const popupConsultation = () => {
         color: white;
         text-align: center;`;
 
-        console.log(formCapture);
-
     formDirector.addEventListener('submit', (event) => {
         event.preventDefault();
         formDirector.appendChild(statusMessage);

@@ -225,8 +225,6 @@ const calc = () => {
     statusMessage.style.cssText = `font-size: 2rem;
     color: black;`;
 
-    console.log(formDiscount);
-
     formDiscount.addEventListener('submit', (event) => {
         event.preventDefault();
         formDiscount.appendChild(statusMessage);
@@ -236,7 +234,6 @@ const calc = () => {
         formData.forEach((val, key) => {
             dataCalc[key] = val;
         });
-        console.log(dataCalc);
         postData(dataCalc).then((response) => {
             if (response.status !== 200) {
                 throw new Error('status network not 200.');
