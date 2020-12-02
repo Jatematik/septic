@@ -53,8 +53,6 @@ const popupConsultation = () => {
         text-align: center;`;
         statusMessage.textContent = loadMessage;
 
-        popupConsultation.style.display = 'block';
-
         const formData = new FormData(formCapture);
         let bodyCapture = {};
         formData.forEach((val, key) => {
@@ -76,7 +74,10 @@ const popupConsultation = () => {
             }
             let deleteMessage = setInterval(deleteMessageTime, 5000);
         });
-        input.value = '';
+        const inputs = formCapture.querySelectorAll('input');
+        inputs.forEach((item) => {
+            item.value = '';
+        });
     });
 
     const postData = (body, outputData, errorData) => {
