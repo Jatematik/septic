@@ -14,9 +14,7 @@ const getBlocks = () => {
         addBlocks.forEach((item) => {
             item.classList.remove('hidden');
         });
-        if (addBlocks.length === 0) {
-            addBtn.style.display = 'none';
-        }
+        addBtn.style.display = 'none';
     });
 };
 
